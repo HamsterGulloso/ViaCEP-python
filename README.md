@@ -1,8 +1,8 @@
 # ViaCEP-python
 ## Modulo simples para fazer requisições à API do ViaCEP em Python
 
-Necessita de:
-ou, CEP;
+Necessita de: \\
+ou, CEP; \\
 ou, Unidade Federativa(Estado), Localidade(Cidade) e Logradouro(Nome da rua, avenida, etc.).
 
 Os formatos aceitos são "json" e "xml".
