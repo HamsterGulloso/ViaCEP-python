@@ -8,11 +8,11 @@ def consultar_via_cep(
     logradouro = None,
     formato = None
 ):   
-    if not formato or formato == 'dict':
+    if not formato:
         formato = 'dict'
         urlformat = "json"
-    elif formato not in ["json", "xml", "dict"]:
-        raise ValueError("\n\nFormatos Aceitos: 'json', 'xml' e 'dict'")
+    elif formato not in ["json", "xml"]:
+        raise ValueError("\n\nFormatos Aceitos: 'json' e 'xml'")
     else:
         urlformat = formato
 
