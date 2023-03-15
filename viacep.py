@@ -1,5 +1,12 @@
 from urllib.request import urlopen
+from urllib.error import URLError, HTTPError
 from json import loads
+
+class BadRequest(Exception):
+    pass
+
+class NoConnection(Exception):
+    pass
 
 def consultar_via_cep(
     cep = None,
@@ -24,6 +31,10 @@ def consultar_via_cep(
         raise ValueError("\n\nInforme ou:\nCEP;\nUnidade Federativa, localidade e logradouro")
 
     url = url.replace(" ", "%20")
-
-    text = urlopen(url).read().decode("utf-8")
-    return text if formato != 'dict' else loads(text)
+    try:
+        text = urlopen(url).read().decode("utf-8")
+        return text if formato != 'dict' else loads(text)
+    except HTTPError:
+        raise BadRequest
+    except URLError:
+        raise NoConnection
